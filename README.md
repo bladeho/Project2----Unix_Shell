@@ -1,9 +1,11 @@
 # Project2----Unix_Shell
 
 compile
+
 gcc unix_shell.c -o out
 
 run
+
 ./out
 
 osh>ls
