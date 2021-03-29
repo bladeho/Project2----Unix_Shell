@@ -31,15 +31,14 @@ int parser(char inputBuffer[], char *args[])
         printf("Command not read\n");
         exit(-1);  //terminate
     }
-    
-   //examine each character
-    for (i=0;i<length;i++)
+
+    for (i=0;i<length;i++) // parser go through
     {
         switch (inputBuffer[i])
         {
             case ' ':
                 break;
-            case '\t' :               // to seperate arguments
+            case '\t' :
                 if(begin != -1)
                 {
                     args[ct] = &inputBuffer[begin];    
@@ -56,16 +55,12 @@ int parser(char inputBuffer[], char *args[])
                     ct++;
                 }
                 inputBuffer[i] = '\0';
-                args[ct] = NULL; // no more args
+                args[ct] = NULL;
                 break;
                 
             default :           
                 if (begin == -1)
                     begin = i;
-                if (inputBuffer[i] == '&')
-                {
-                    inputBuffer[i] = '\0';
-                }
         }
     }
 
@@ -78,10 +73,10 @@ int parser(char inputBuffer[], char *args[])
 		return -1;
         }
 
-	else if (args[0][0]-'!' ==0 & args[0][1]-'!' ==0)
+	else if (args[0][0]-'!' ==0 & args[0][1]-'!' ==0)//!!
 
 	{	 
-        strcpy(inputBuffer,history[0]);//!!
+        strcpy(inputBuffer,history[0]);
 	}
 
     strcpy(history[0],inputBuffer); //Update
